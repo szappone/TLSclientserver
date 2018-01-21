@@ -1,0 +1,19 @@
+szappon1
+nfendle1
+
+Part 1
+We added in steps 1-4 and wrapped the TCP socket with the SSL/TLS context. We used argparse to
+run the client in accordance with the flag options passed in. It works exactly as expected.
+
+Part 2
+We added in the elements needed to support SSL/TLS by generating a self signed certificate and
+disabled certificate validation to test it against our client. It works as expected.
+
+Part 3
+This was simple: we had to convert the certificate from DER to PEM and print the tuple to the
+commandline. For example:
+	run:
+	python tls_client.py --tlsv1.1 --cacert server.crt 127.0.0.1 12345 server.key
+	output:
+	getting cert
+	[('C', 'US'), ('ST', 'Maryland'), ('L', 'Baltimore'), ('O', 'Sarah and Neil'), ('OU', 'Ballers'), ('CN', 'Bosses'), ('emailAddress', 'networkshackers@gmail.com')]
